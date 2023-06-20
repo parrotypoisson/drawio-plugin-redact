@@ -3,18 +3,18 @@ Draw.loadPlugin(function(ui){
     mxResources.parse('redact=Redact Cells');
 
     ui.actions.addAction('redact', function(){
-        var model = ui.editor.graph.model;
+        const model = ui.editor.graph.model;
         model.beginUpdate();
 
-        for(var id in model.cells){
+        for(let id in model.cells){
             model.setValue(model.cells[id], "REDACTED");
         }
 
         model.endUpdate();
     });
 
-    var menu = ui.menus.get('extras');
-    var oldFunct = menu.funct;
+    const menu = ui.menus.get('extras');
+    const oldFunct = menu.funct;
 
     menu.funct = function(menu, parent){
         oldFunct.apply(this, arguments);
